@@ -1,0 +1,1 @@
+"# MC_CourseProject"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/muhammad-asher/MC_CourseProject.gitgit push -u origin main
