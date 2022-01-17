@@ -1,5 +1,6 @@
 package com.example.mc_courseproject;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,15 +11,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 
-import com.example.mc_courseproject.Adapter;
-import com.example.mc_courseproject.AddNotesActivity;
-import com.example.mc_courseproject.Model;
-import com.example.mc_courseproject.R;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,10 +28,15 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     Adapter adapter;
     List<Model> notesList;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar=getSupportActionBar();
+
 
         recyclerView=findViewById(R.id.recycler_view);
         fab=findViewById(R.id.fab);
