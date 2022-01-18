@@ -1,17 +1,21 @@
 package com.example.mc_courseproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
+
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -25,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     Adapter adapter;
     List<Model> notesList;
     Toolbar toolbar;
+    DatabaseClass databaseClass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
 
+
         recyclerView=findViewById(R.id.recycler_view);
         fab=findViewById(R.id.fab);
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,12 +54,34 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
         notesList=new ArrayList<>();
+        databaseClass=new DatabaseClass(this);
+        fetchAllNotesFromDatabase();
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter=new Adapter(this,MainActivity.this,notesList);
         recyclerView.setAdapter(adapter);
     }
 
+
+    void fetchAllNotesFromDatabase()
+    {
+       Cursor cursor=  databaseClass.readAllData();
+
+       if (cursor.getCount()==0)
+       {
+           Toast.makeText(this, "No Data to show", Toast.LENGTH_SHORT).show();
+       }
+       else
+       {
+           while (cursor.moveToNext())
+           {
+               notesList.add(new Model(cursor.getString(0),cursor.getString(1),cursor.getString(2)));
+           }
+       }
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -78,4 +108,24 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId()==R.id.delete_all_notes)
+        {
+            deleteAllNotes();
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void deleteAllNotes()
+    {
+        DatabaseClass db =new DatabaseClass(MainActivity.this);
+        db.deleteAllNotes();
+        recreate();
+    }
+
 }
