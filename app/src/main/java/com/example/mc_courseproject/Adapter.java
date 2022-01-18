@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
     Context context;
