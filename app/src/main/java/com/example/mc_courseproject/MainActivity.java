@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
-
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
