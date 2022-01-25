@@ -23,8 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
         buttonrepo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  openWebPage("https://github.com/AbdullahrRehman");
-                  openWebPage("https://github.com/muhammad-asher/MC_CourseProject");
+                openWebPage("https://github.com/muhammad-asher/MC_CourseProject");
 
             }
         });
