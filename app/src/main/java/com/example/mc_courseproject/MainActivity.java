@@ -1,7 +1,6 @@
 package com.example.mc_courseproject;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -15,8 +14,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import androidx.appcompat.widget.Toolbar;
 import android.view.View;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,10 +32,9 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     Adapter adapter;
     List<Model> notesList;
+    Toolbar toolbar;
     DatabaseClass databaseClass;
     CoordinatorLayout coordinatorLayout;
-    Toolbar toolbar;
-
 
 
     @Override
@@ -45,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
-
-
 
         recyclerView = findViewById(R.id.recycler_view);
         fab = findViewById(R.id.fab);
