@@ -1,6 +1,7 @@
 package com.example.mc_courseproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     Adapter adapter;
     List<Model> notesList;
-    Toolbar toolbar;
     DatabaseClass databaseClass;
+
+    Toolbar toolbar;
+
 
 
     @Override
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar=getSupportActionBar();
+
 
 
         recyclerView=findViewById(R.id.recycler_view);
@@ -98,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
                 return true;
             }
         };
