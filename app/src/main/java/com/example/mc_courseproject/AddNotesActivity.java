@@ -1,4 +1,4 @@
-package com.example.mc_courseproject;
+package com.example.mc_courseproject;;
 
 import androidx.appcompat.app.AppCompatActivity;
 
