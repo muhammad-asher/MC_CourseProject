@@ -1,4 +1,4 @@
-package com.example.mc_courseproject;
+package com.example.mc_courseproject;;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,6 +14,7 @@ public class DatabaseClass extends SQLiteOpenHelper {
     Context context;
     private static final String DatabaseName="MyNotes";
     private static final int DatabaseVersion=1;
+
     private static final String TableName="mynotes";
     private static final String ColumnId="id";
     private static final String ColumnTitle="title";
